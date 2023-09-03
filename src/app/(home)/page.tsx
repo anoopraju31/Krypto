@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import CurrencyCard from '../components/CurrencyCard'
+import { HistoryType } from '../api/crypto/price-history/route'
 
-export default function Home() {
+export default async function Home() {
 	return (
 		<main className='w-full min-h-screen pt-10 bg-slate-800 text-white'>
 			{/* Greeting */}

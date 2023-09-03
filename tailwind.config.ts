@@ -17,6 +17,9 @@ const config: Config = {
 				text: 'var(--font-text)',
 				heading: 'var(--font-heading)',
 			},
+			boxShadow: {
+				cover: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
+			},
 		},
 	},
 	plugins: [],
