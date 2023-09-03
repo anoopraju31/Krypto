@@ -3,7 +3,7 @@ import CurrencyCard from '../components/CurrencyCard'
 
 export default function Home() {
 	return (
-		<main className='w-full min-h-screen pt-10 bg-slate-700 text-white'>
+		<main className='w-full min-h-screen pt-10 bg-slate-800 text-white'>
 			{/* Greeting */}
 			{/* Overall Market Stats */}
 			{/* Trending/Top Crypto Currencies */}
@@ -15,7 +15,9 @@ export default function Home() {
 					</div>
 				</div>
 
-				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+				<div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
+					<CurrencyCard />
+					<CurrencyCard />
 					<CurrencyCard />
 					<CurrencyCard />
 					<CurrencyCard />

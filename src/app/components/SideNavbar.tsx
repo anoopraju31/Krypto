@@ -70,7 +70,7 @@ const SideNavbar = () => {
 					isExpanded
 						? 'w-full sm:w-1/5 sm:min-w-[300px] sm:max-w-[300px] left-0'
 						: 'w-auto px-0 -left-full md:left-0'
-				} h-full p-4 text-white bg-slate-950 flex flex-col`}>
+				} h-full p-4 text-white bg-gray-900 flex flex-col`}>
 				<div className='mb-6'>
 					<h2 className='text-3xl px-2 text-center uppercase font-text font-extrabold'>
 						<Link href='/'>
