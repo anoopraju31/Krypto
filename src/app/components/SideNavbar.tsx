@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FC, ReactElement, ReactNode, useEffect, useState } from 'react'
 import { BiHomeAlt2, BiNews, BiSolidBriefcase } from 'react-icons/bi'
 import { BsCurrencyBitcoin, BsFillBookmarkStarFill } from 'react-icons/bs'
@@ -13,10 +14,13 @@ type NavLinkProps = {
 }
 
 const NavLink = ({ title, link, icon, isExpanded }: NavLinkProps) => {
+	const pathname = usePathname()
 	const Icon = icon
 	return (
 		<li
-			className={`bg-gray-700 ${
+			className={`${
+				pathname === link ? 'bg-gray-700' : 'bg-transparent'
+			} hover:bg-gray-700 ${
 				isExpanded
 					? 'py-2 px-4 rounded-lg'
 					: 'w-9 h-9 mx-2 rounded-full flex justify-center items-center'
@@ -33,6 +37,7 @@ const NavLink = ({ title, link, icon, isExpanded }: NavLinkProps) => {
 
 const SideNavbar = () => {
 	const [isExpanded, setIsExpanded] = useState<boolean>(true)
+	const pathname = usePathname()
 
 	useEffect(() => {
 		const collaspeNavbar = () => {
@@ -47,17 +52,23 @@ const SideNavbar = () => {
 			window.removeEventListener('resize', collaspeNavbar)
 		}
 	}, [])
+
+	useEffect(() => {
+		if (typeof window !== 'undefined' && window.innerWidth < 768) {
+			setIsExpanded(false)
+		}
+	}, [pathname])
 	return (
 		<header
 			className={`${
 				isExpanded
-					? 'w-full md:w-1/5 md:min-w-[300px] md:max-w-[300px]'
+					? 'w-0 md:w-1/5 md:min-w-[300px] md:max-w-[300px]'
 					: 'md:w-[53.625px] px-0'
 			} min-h-screen h-auto`}>
 			<div
 				className={`fixed top-0 z-50 ${
 					isExpanded
-						? 'w-full md:w-1/5 md:min-w-[300px] md:max-w-[300px] left-0'
+						? 'w-full sm:w-1/5 sm:min-w-[300px] sm:max-w-[300px] left-0'
 						: 'w-auto px-0 -left-full md:left-0'
 				} h-full p-4 text-white bg-slate-950 flex flex-col`}>
 				<div className='mb-6'>
