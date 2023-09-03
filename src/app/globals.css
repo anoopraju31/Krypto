@@ -9,3 +9,18 @@
 	--font-text: 'Rubik', sans-serif;
 	--font-heading: 'Teko', sans-serif;
 }
+
+body::-webkit-scrollbar-track {
+	background-color: #111827;
+}
+
+body::-webkit-scrollbar {
+	width: 12px;
+	background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #ffffff;
+}
