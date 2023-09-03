@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import CurrencyCard from '../components/CurrencyCard'
 
 export default function Home() {
 	return (
@@ -14,7 +15,16 @@ export default function Home() {
 					</div>
 				</div>
 
-				<div className=''></div>
+				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+					<CurrencyCard />
+					<CurrencyCard />
+					<CurrencyCard />
+					<CurrencyCard />
+					<CurrencyCard />
+					<CurrencyCard />
+					<CurrencyCard />
+					<CurrencyCard />
+				</div>
 			</section>
 			{/* Latest Crypto News */}
 		</main>
