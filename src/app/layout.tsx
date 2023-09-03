@@ -1,3 +1,4 @@
+import SideNavbar from './components/SideNavbar'
 import './globals.css'
 import type { Metadata } from 'next'
 
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body>{children}</body>
+			<body>
+				<SideNavbar />
+				{children}
+			</body>
 		</html>
 	)
 }
