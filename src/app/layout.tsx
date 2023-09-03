@@ -18,9 +18,11 @@ export default function RootLayout({
 			<body className='relative'>
 				<div className='flex'>
 					<SideNavbar />
-					{children}
+					<div className='flex flex-col'>
+						{children}
+						<Footer />
+					</div>
 				</div>
-				<Footer />
 			</body>
 		</html>
 	)

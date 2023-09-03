@@ -62,9 +62,9 @@ const SideNavbar = () => {
 		<header
 			className={`${
 				isExpanded
-					? 'w-0 md:w-1/5 md:min-w-[300px] md:max-w-[300px]'
-					: 'md:w-[53.625px] px-0'
-			} min-h-screen h-auto`}>
+					? 'w-0 md:w-[52px] mx-0 md:px-6 lg:w-1/5 lg:min-w-[300px] lg:max-w-[300px]'
+					: 'w-auto md:w-[52px] mx-0 md:px-6'
+			} min-h-screen h-auto bg-green-500`}>
 			<div
 				className={`fixed top-0 z-50 ${
 					isExpanded
