@@ -1,3 +1,4 @@
+import Footer from './components/Footer'
 import SideNavbar from './components/SideNavbar'
 import './globals.css'
 import type { Metadata } from 'next'
@@ -19,6 +20,7 @@ export default function RootLayout({
 					<SideNavbar />
 					{children}
 				</div>
+				<Footer />
 			</body>
 		</html>
 	)
