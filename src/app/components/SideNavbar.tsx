@@ -122,9 +122,9 @@ const SideNavbar = () => {
 				</nav>
 
 				<div className='pt-2 flex gap-3 justify-center items-center border-t border-t-slate-700'>
-					<div className='relative w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600'>
+					<div className='relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600'>
 						<svg
-							className='absolute w-[43.2px] h-[43.2px] text-gray-400 -left-1'
+							className='absolute w-[38.4px] h-[38.4px] text-gray-400 -left-1'
 							fill='currentColor'
 							viewBox='0 0 20 20'
 							xmlns='http://www.w3.org/2000/svg'>
