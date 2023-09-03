@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { FC, ReactElement, ReactNode, useState } from 'react'
+import { FC, ReactElement, ReactNode, useEffect, useState } from 'react'
 import { BiHomeAlt2, BiNews, BiSolidBriefcase } from 'react-icons/bi'
 import { BsCurrencyBitcoin, BsFillBookmarkStarFill } from 'react-icons/bs'
 import { GiHamburgerMenu } from 'react-icons/gi'
@@ -33,90 +33,113 @@ const NavLink = ({ title, link, icon, isExpanded }: NavLinkProps) => {
 
 const SideNavbar = () => {
 	const [isExpanded, setIsExpanded] = useState<boolean>(true)
+
+	useEffect(() => {
+		const collaspeNavbar = () => {
+			if (typeof window !== 'undefined' && window.innerWidth < 768) {
+				setIsExpanded(false)
+			}
+		}
+
+		window.addEventListener('resize', collaspeNavbar)
+
+		return () => {
+			window.removeEventListener('resize', collaspeNavbar)
+		}
+	}, [])
 	return (
 		<header
-			className={`fixed top-0 left-0 ${
-				isExpanded ? 'w-1/5 min-w-[300px] max-w-sm' : 'w-auto px-0'
-			} h-full p-4 text-white bg-slate-950 flex flex-col`}>
-			<div className='mb-6'>
-				<h2 className='text-3xl px-2 text-center uppercase font-text font-extrabold'>
-					<Link href='/'>
-						{' '}
-						{isExpanded ? (
-							<span> Krypto </span>
-						) : (
-							<span className='rounded-full py-2 px-3 border leading-none text-xl'>
-								K
-							</span>
-						)}{' '}
-					</Link>
-				</h2>
-			</div>
+			className={`${
+				isExpanded
+					? 'w-full md:w-1/5 md:min-w-[300px] md:max-w-[300px]'
+					: 'md:w-[53.625px] px-0'
+			} min-h-screen h-auto`}>
+			<div
+				className={`fixed top-0 z-50 ${
+					isExpanded
+						? 'w-full md:w-1/5 md:min-w-[300px] md:max-w-[300px] left-0'
+						: 'w-auto px-0 -left-full md:left-0'
+				} h-full p-4 text-white bg-slate-950 flex flex-col`}>
+				<div className='mb-6'>
+					<h2 className='text-3xl px-2 text-center uppercase font-text font-extrabold'>
+						<Link href='/'>
+							{' '}
+							{isExpanded ? (
+								<span> Krypto </span>
+							) : (
+								<span className='w-9 h-9 inline-flex justify-center items-center rounded-full border leading-none text-xl'>
+									K
+								</span>
+							)}{' '}
+						</Link>
+					</h2>
+				</div>
 
-			<nav className='flex-1'>
-				<ul className='flex flex-col gap-3 font-text'>
-					<NavLink
-						title='Home'
-						link='/'
-						isExpanded={isExpanded}
-						icon={BiHomeAlt2}
-					/>
-					<NavLink
-						title='News'
-						link='/news'
-						isExpanded={isExpanded}
-						icon={BiNews}
-					/>
-					<NavLink
-						title='Currencies'
-						link='/crypto-currencies'
-						isExpanded={isExpanded}
-						icon={BsCurrencyBitcoin}
-					/>
-					<NavLink
-						title='Portfolio'
-						link='/portfolio'
-						isExpanded={isExpanded}
-						icon={BiSolidBriefcase}
-					/>
-					<NavLink
-						title='Watchlist'
-						link='/watchlist'
-						isExpanded={isExpanded}
-						icon={BsFillBookmarkStarFill}
-					/>
-				</ul>
-			</nav>
+				<nav className='flex-1'>
+					<ul className='flex flex-col gap-3 font-text'>
+						<NavLink
+							title='Home'
+							link='/'
+							isExpanded={isExpanded}
+							icon={BiHomeAlt2}
+						/>
+						<NavLink
+							title='News'
+							link='/news'
+							isExpanded={isExpanded}
+							icon={BiNews}
+						/>
+						<NavLink
+							title='Currencies'
+							link='/crypto-currencies'
+							isExpanded={isExpanded}
+							icon={BsCurrencyBitcoin}
+						/>
+						<NavLink
+							title='Portfolio'
+							link='/portfolio'
+							isExpanded={isExpanded}
+							icon={BiSolidBriefcase}
+						/>
+						<NavLink
+							title='Watchlist'
+							link='/watchlist'
+							isExpanded={isExpanded}
+							icon={BsFillBookmarkStarFill}
+						/>
+					</ul>
+				</nav>
 
-			<div className='pt-2 flex gap-3 justify-center items-center border-t border-t-slate-700'>
-				<div className='relative w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600'>
-					<svg
-						className='absolute w-[43.2px] h-[43.2px] text-gray-400 -left-1'
-						fill='currentColor'
-						viewBox='0 0 20 20'
-						xmlns='http://www.w3.org/2000/svg'>
-						<path
-							fillRule='evenodd'
-							d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z'
-							clipRule='evenodd'></path>
-					</svg>
+				<div className='pt-2 flex gap-3 justify-center items-center border-t border-t-slate-700'>
+					<div className='relative w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600'>
+						<svg
+							className='absolute w-[43.2px] h-[43.2px] text-gray-400 -left-1'
+							fill='currentColor'
+							viewBox='0 0 20 20'
+							xmlns='http://www.w3.org/2000/svg'>
+							<path
+								fillRule='evenodd'
+								d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z'
+								clipRule='evenodd'></path>
+						</svg>
+					</div>
+
+					<div
+						className={`font-text tracking-tight ${
+							isExpanded ? 'flex-1' : 'hidden'
+						}`}>
+						<h4 className='text-sm'> Anoop Raju </h4>
+						<p className='text-xs'> anoopraju31@gmail.com</p>
+					</div>
 				</div>
 
 				<div
-					className={`font-text tracking-tight ${
-						isExpanded ? 'flex-1' : 'hidden'
-					}`}>
-					<h4 className='text-sm'> Anoop Raju </h4>
-					<p className='text-xs'> anoopraju31@gmail.com</p>
+					className='fixed top-4 right-4 z-50 bg-slate-950 w-8 h-8 rounded-lg flex justify-center'
+					onClick={() => setIsExpanded((prev) => !prev)}>
+					<button className='text-xl leading-none'>
+						<GiHamburgerMenu />
+					</button>
 				</div>
-			</div>
-
-			<div
-				className='fixed top-4 right-4 bg-slate-950 w-8 h-8 rounded-lg flex justify-center'
-				onClick={() => setIsExpanded((prev) => !prev)}>
-				<button className='text-xl leading-none'>
-					<GiHamburgerMenu />
-				</button>
 			</div>
 		</header>
 	)
