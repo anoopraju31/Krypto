@@ -145,7 +145,7 @@ const SideNavbar = () => {
 				</div>
 
 				<div
-					className='fixed top-4 right-4 z-50 bg-slate-950 w-8 h-8 rounded-lg flex justify-center'
+					className='fixed top-4 right-4 z-50 bg-gray-900 p-2 rounded-full flex justify-center'
 					onClick={() => setIsExpanded((prev) => !prev)}>
 					<button className='text-xl leading-none'>
 						<GiHamburgerMenu />

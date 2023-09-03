@@ -1,15 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { HistoryType } from '../api/crypto/price-history/route'
-import {
-	Label,
-	Line,
-	LineChart,
-	ResponsiveContainer,
-	Tooltip,
-	XAxis,
-	YAxis,
-} from 'recharts'
+import { Line, LineChart, ResponsiveContainer, YAxis } from 'recharts'
 import Image from 'next/image'
 
 const CurrencyCard = () => {
@@ -30,7 +22,7 @@ const CurrencyCard = () => {
 
 	if (!data)
 		return (
-			<div className='aspect-square rounded-lg'>
+			<div className='rounded-lg'>
 				<div
 					role='status'
 					className='max-w-sm p-4 rounded animate-pulse md:p-6'>
@@ -51,7 +43,7 @@ const CurrencyCard = () => {
 		)
 
 	return (
-		<div className='aspect-square p-4 rounded-lg hover:shadow-cover'>
+		<div className='p-4 rounded-lg hover:shadow-cover'>
 			<div className='pb-4 flex justify-between items-end'>
 				<div className=''>
 					<h4> Bitcoin </h4>
@@ -75,8 +67,8 @@ const CurrencyCard = () => {
 				</LineChart>
 			</ResponsiveContainer>
 
-			<div className='flex items-center mt-4 space-x-3 '>
-				<div className='w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700'>
+			<div className='flex items-center mt-4 space-x-3'>
+				<div className='w-8 h-8'>
 					<Image
 						src='https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg'
 						alt='btc'
