@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import CurrencyCard from '../components/CurrencyCard'
-import { TopCrypto } from './sections'
+import { TopCrypto, TopNews } from './sections'
 
 export default async function Home() {
 	return (
@@ -9,7 +9,9 @@ export default async function Home() {
 			{/* Overall Market Stats */}
 			{/* Trending/Top Crypto Currencies */}
 			<TopCrypto />
+
 			{/* Latest Crypto News */}
+			<TopNews />
 		</main>
 	)
 }
