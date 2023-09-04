@@ -43,7 +43,7 @@ const CurrencyCard = () => {
 		)
 
 	return (
-		<div className='p-4 rounded-lg hover:shadow-cover'>
+		<div className='p-4 rounded-lg shadow-cover'>
 			<div className='pb-4 flex justify-between items-end'>
 				<div className=''>
 					<h4> Bitcoin </h4>

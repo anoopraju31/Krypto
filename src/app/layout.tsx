@@ -16,9 +16,9 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className='relative'>
-				<div className='flex'>
+				<div className='flex overflow-hidden'>
 					<SideNavbar />
-					<div className='flex flex-col'>
+					<div className='flex flex-col '>
 						{children}
 						<Footer />
 					</div>

@@ -24,7 +24,7 @@ const NavLink = ({ title, link, icon, isExpanded }: NavLinkProps) => {
 				isExpanded
 					? 'py-2 px-4 rounded-lg'
 					: 'w-9 h-9 mx-2 rounded-full flex justify-center items-center'
-			} transition-colors duration-500`}>
+			} transition-colors duration-300`}>
 			<Link
 				href={link}
 				className={`${isExpanded && 'w-full h-full flex gap-2 items-center'}`}>
@@ -36,7 +36,7 @@ const NavLink = ({ title, link, icon, isExpanded }: NavLinkProps) => {
 }
 
 const SideNavbar = () => {
-	const [isExpanded, setIsExpanded] = useState<boolean>(true)
+	const [isExpanded, setIsExpanded] = useState<boolean>(false)
 	const pathname = usePathname()
 
 	useEffect(() => {
@@ -145,7 +145,7 @@ const SideNavbar = () => {
 				</div>
 
 				<div
-					className='fixed top-4 right-4 z-50 bg-gray-900 p-2 rounded-full flex justify-center'
+					className='fixed top-4 right-4 z-50 bg-gray-900 hover:bg-gray-700 p-3 rounded-full flex justify-center transition-colors duration-300'
 					onClick={() => setIsExpanded((prev) => !prev)}>
 					<button className='text-xl leading-none'>
 						<GiHamburgerMenu />
