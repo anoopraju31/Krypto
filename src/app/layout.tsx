@@ -18,7 +18,7 @@ export default function RootLayout({
 			<body className='relative'>
 				<div className='flex overflow-hidden'>
 					<SideNavbar />
-					<div className='flex flex-col '>
+					<div className='w-full flex flex-col '>
 						{children}
 						<Footer />
 					</div>
