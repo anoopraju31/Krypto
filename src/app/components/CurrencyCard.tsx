@@ -8,16 +8,25 @@ const CurrencyCard = () => {
 	const [data, setData] = useState<any[] | null>(null)
 	const [minValue, setMinValue] = useState<number>(0)
 	const [maxValue, setMaxValue] = useState<number>(0)
+	const [changeRate, setChangeRate] = useState<number>(0)
 
 	useEffect(() => {
-		fetch('http://localhost:3000/api/crypto/price-history')
-			.then((response) => response.json())
-			.then((result) => {
-				setData(result.data)
-				let price = result.data.map((token: HistoryType) => token.price)
-				setMinValue(Math.min(price))
-				setMaxValue(Math.max(price))
-			})
+		const interval = setInterval(() => {
+			fetch('http://localhost:3000/api/crypto/price-history')
+				.then((response) => response.json())
+				.then((result) => {
+					setData(result.data)
+					let price = result.data.map((token: HistoryType) => token.price)
+					setMinValue(Math.min(price))
+					setMaxValue(Math.max(price))
+					setChangeRate(
+						((price[0] - price[price.length - 1]) / price[price.length - 1]) *
+							100,
+					)
+				})
+		}, 1000)
+
+		return () => clearInterval(interval)
 	}, [])
 
 	if (!data)
@@ -43,14 +52,18 @@ const CurrencyCard = () => {
 		)
 
 	return (
-		<div className='p-4 rounded-lg shadow-cover'>
+		<div className='p-4 rounded-lg hover:shadow-cover'>
 			<div className='pb-4 flex justify-between items-end'>
 				<div className=''>
 					<h4> Bitcoin </h4>
 					<p> BTC </p>
 				</div>
 				<div className=''>
-					<p> 3.5% </p>
+					<p
+						className={`${changeRate < 0 ? 'text-red-500' : 'text-green-500'}`}>
+						{' '}
+						{changeRate.toFixed(3)}{' '}
+					</p>
 				</div>
 			</div>
 
@@ -59,7 +72,7 @@ const CurrencyCard = () => {
 					<Line
 						type='monotone'
 						dataKey={'price'}
-						stroke={'#f33'}
+						stroke={changeRate < 0 ? 'rgb(239 68 68)' : 'rgb(34 197 94)'}
 						strokeWidth={2}
 						dot={false}
 					/>
