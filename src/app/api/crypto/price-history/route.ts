@@ -13,6 +13,8 @@ export type ResultType = {
 	}
 }
 
+// export const revalidate = 60
+
 export async function GET() {
 	const url =
 		'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h'
@@ -21,6 +23,9 @@ export async function GET() {
 		headers: {
 			'X-RapidAPI-Key': '05878f2909mshc4d7ee979d65979p183a2ejsnc70fb51aa2b6',
 			'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com',
+		},
+		next: {
+			revalidate: 60,
 		},
 	}
 
